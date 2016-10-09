@@ -1,0 +1,184 @@
+<!Doctype html>
+<html>
+<!-- jQuery library -->
+<style>
+#container {
+	width: 400px;
+	height: 400px;
+	position: relative;
+	background: yellow;
+}
+#animate {
+	width: 50px;
+	height: 200px;
+	
+	/*border-radius: 30px;*/
+	background: green;
+	left:350;
+	position: absolute;
+}
+	#animate1 {
+	width: 50px;
+	height: 100px;
+	
+	/*border-radius: 30px;*/
+	background: green;
+	left:350;
+	top:300px;	
+	position: absolute;
+		bottom: 0;
+}
+	#animate2 {
+	width: 50px;
+	height: 50px;
+	
+	border-radius: 30px;
+	background: red;
+	top:220px;	
+	position: absolute;
+}
+	#demo1
+	{
+		
+	}
+</style>
+<body>
+<h1>Show your speed</h1>
+<button onClick="demo1()" id="up">up</button>
+<button onClick="demo()" id="down">down</button>
+<div id="container"> 
+  <div id="animate" onClick=""></div>
+  <div id="animate1" onClick=""></div>
+  <div id="animate2" onClick="demo()"></div>
+</div>
+<p id="demo1">
+	sjjsj
+</p>
+<script>
+	var pt=document.getElementById("animate");
+		var pt1=document.getElementById("animate1");
+	var pos=350;
+	var height=200;
+	var height1=100;
+	var top=300;
+	
+	var z;
+	var id=setInterval(function(){
+		
+		z = (Math.floor((Math.random() * 100) + 1)+50)%130;
+				if(pos==0)
+				{
+					pos=350;
+					height=0;
+					height=height+z;
+					height1=100;
+					var top=300;
+					console.log(height+" height");
+					console.log(z+" offset");
+					pt.style.height=height +'px';
+					height1=height1+z;
+					pt1.style.height=height1+ 'px';
+					top=top-z;
+					pt1.style.top=top +'px';
+					
+					
+				}
+			pos--;
+			pt.style.left=pos + 'px';
+			
+	},10);
+	var id1=setInterval(function(){
+				if(pos==0)
+				{
+					
+					pos=350;
+					
+					
+					
+				}
+			pos--;
+			pt1.style.left=pos + 'px';
+			
+	},10);
+	function demo()
+	{
+		var pt2=document.getElementById("animate2");
+		pos1=pt2.offsetTop;
+		//alert(pos1);
+			pos1=pos1+20;
+			pt2.style.top=pos1 +'px';
+		
+	}
+	function demo1()
+	{
+		var pt2=document.getElementById("animate2");
+		pos1=pt2.offsetTop;
+		//alert(pos1);
+			pos1=pos1-20;
+			pt2.style.top=pos1 +'px';
+		
+	}
+	  function collision($animate, $animate2) {
+      var x1 = $animate.offset().left;
+      var y1 = $animate.offset().top;
+      var h1 = $animate.outerHeight(true);
+      var w1 = $animate.outerWidth(true);
+      var b1 = y1 + h1;
+      var r1 = x1 + w1;
+      var x2 = $animate2.offset().left;
+      var y2 = $animate2.offset().top;
+      var h2 = $animate2.outerHeight(true);
+      var w2 = $animate2.outerWidth(true);
+      var b2 = y2 + h2;
+      var r2 = x2 + w2;
+        
+      if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) {
+		  //alert("loser");
+		  console.log("flap");
+		  return false;   
+		  
+		  
+	  }
+		  alert("loser");
+		  window.location.reload(1);
+      return true;
+    }
+
+function collision1($animate1, $animate2) {
+      var x1 = $animate1.offset().left;
+      var y1 = $animate1.offset().top;
+      var h1 = $animate1.outerHeight(true);
+      var w1 = $animate1.outerWidth(true);
+      var b1 = y1 + h1;
+      var r1 = x1 + w1;
+      var x2 = $animate2.offset().left;
+      var y2 = $animate2.offset().top;
+      var h2 = $animate2.outerHeight(true);
+      var w2 = $animate2.outerWidth(true);
+      var b2 = y2 + h2;
+      var r2 = x2 + w2;
+        console.log("inside second");
+      if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) {
+		  //alert("loser");
+		  console.log("flap1");
+		  return false;
+		  
+		  
+	  }
+		console.log("flap1")
+		  alert("loser");
+		window.location.reload(1);
+      return true;
+    }
+	
+window.setInterval(function() {
+    $('#demo1').text(collision($('#animate'), $('#animate2')));
+	$('#demo1').text(collision1($('#animate1'), $('#animate2')));
+	
+}, 200);
+
+
+</script>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</html>

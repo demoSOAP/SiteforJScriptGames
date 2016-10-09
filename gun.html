@@ -1,0 +1,134 @@
+<!Doctype html>
+<html>
+<!-- jQuery library -->
+<style>
+#container {
+	width: 400px;
+	height: 400px;
+	position: relative;
+	background: yellow;
+}
+#animate {
+	width: 50px;
+	height: 200px;
+	
+	/*border-radius: 30px;*/
+	background: green;
+	left:350;
+	position: absolute;
+}
+	#animate1 {
+	width: 50px;
+	height: 100px;
+	
+	/*border-radius: 30px;*/
+	background: green;
+	left:350;
+	top:300px;	
+	position: absolute;
+		bottom: 0;
+}
+	#animate2 {
+	width: 50px;
+	height: 50px;
+	border-radius: 30px;
+	background: red;
+	top: 212px;
+	left: 348px;
+	position: absolute;
+}
+	#animate3 {
+	width: 50px;
+	height: 50px;
+	
+	border-radius: 0px 20px 20px 0px;
+	background: rgba(19,23,197,1.00);
+	top:220px;	
+	position: absolute;
+}
+	#animate4 {
+	width: 30px;
+	height: 5px;
+	
+	border-radius: 30px;
+	background:rgba(0,0,0,1.00);
+	top:240px;
+	left:30px;	
+	position: absolute;
+}
+	#demo1
+	{
+		
+	}
+	
+</style>
+<body>
+<h1>Show your speed</h1>
+<button onClick="demo1()" id="up">up</button>
+<button onClick="demo1()" id="down">down</button>
+<div id="container"> 
+  <div id="animate" onClick=""></div>
+  <div id="animate1" onClick=""></div>
+  <div id="animate2" onClick="demo()"></div>
+  <div id="animate3" onClick="demo()"></div>
+  <div id="animate4" onClick="demo()"></div>
+</div>
+<p id="demo1">
+	sjjsj
+</p>
+<script>
+	var pt=document.getElementById("animate2");
+		
+	
+	var z;
+	pos=212;
+	var id=setInterval(function(){
+		if(pos==350)
+				{
+					pos=0;
+				}
+	
+		pos++;
+		pt.style.top=pos +'px';
+			
+	},10);
+	function demo()
+	{
+		var pt2=document.getElementById("animate2");
+		pos1=pt2.offsetTop;
+		//alert(pos1);
+			
+			pos1=pos1+20;
+			pt2.style.top=pos1 +'px';
+		
+	}
+	function demo1()
+	{
+		var pt2=document.getElementById("animate4");
+		//$("#up").hide;
+		var button=document.getElementById("up");
+        button.removeAttribute("onClick");
+		pt2.style.left=30 +'px';
+		var position=30;
+		console.log("demo");
+		var ids=setInterval(function(){
+			if(position==350){
+				//pt2.style.left=0 +'px';
+				position=30;
+				button.setAttribute("onClick","demo1()");
+				clearInterval(ids);
+			}
+			position++;
+			pt2.style.left=position +'px';
+			
+		},5)
+		
+		
+		
+	}
+
+
+</script>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</html>

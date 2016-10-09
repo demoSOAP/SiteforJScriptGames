@@ -1,0 +1,115 @@
+<!Doctype html>
+<html>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<style>
+#container {
+	width: 400px;
+	height: 400px;
+	position: relative;
+	background: yellow;
+}
+#animate {
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	border-radius: 30px;
+	background: red;
+	left: 198px;
+	top: 5px;
+}
+</style>
+<body>
+<h1>Show your speed</h1>
+<button id="demo">LEVEL 1</button>
+<button onClick="myvar()" id="d">click me</button>
+<div id="container"> 
+  <!--<div id="animate" onClick="myvar1()"></div>--> 
+</div>
+<script>
+	var x=0;
+	var colors=["blue","green","cyan","black","red","white"]
+	
+	/*
+	$(document).onload(function(){
+					   $("#container").toggle;
+					   });*/
+		function myvar()
+		{
+			if(x==0){
+			var btn = document.getElementById("container");        // Create a <button> element
+			var btn1 = document.createElement("div");   
+			btn1.setAttribute("id","animate");
+			btn1.setAttribute("onClick","myvar1()")
+			var t = document.createTextNode("CLICK ME");       // Create a text node
+			btn.appendChild(btn1);                                // Append the text to <button>
+			document.body.appendChild(btn);                    // Append <button> to <body>
+				x++;
+			}
+			var element=document.getElementById("animate");
+			var pos=0;
+			var startTime = new Date().getTime();
+			var id=setInterval(function(){
+					if(new Date().getTime() - startTime > 20000){
+							clearInterval(id);
+							myscore(x);
+						
+						window.location.reload(1);
+						//	return;
+						}
+					if(pos==350)
+					{
+						//clearInterval(id);
+						
+						for(var i=350;i>=0;i--)
+						{
+						pos--;
+						element.style.top=pos + 'px';
+						element.style.left=pos + 'px';
+							 var z = Math.floor((Math.random() * 10) + 1)%6;
+							element.style.background=colors[z];
+							console.log(colors[z]);
+							console.log(x+'');
+						}
+						
+					}
+				else{
+					pos++;
+					element.style.top=pos + 'px';
+					element.style.left=pos + 'px';
+				}
+				
+			},2);
+			 // window.location.reload(1);
+			//myscore(x);
+		
+		}
+	
+	function myvar1()
+	{
+		alert(" woaahhh u gotchaa  "+x);
+		x=x+1;
+		console.log(x);
+		 var itm = document.getElementById("animate");
+    var cln = itm.cloneNode(true);
+    document.getElementById("container").appendChild(cln).removeAttribute("onClick","myvar1()");
+			console.log("myvar1 inside");
+	}
+	function myscore(y)
+	{
+		alert(y+"************************************* your score ********************** ");
+		console.log("myscore k andar"); 
+		myvar();
+	}
+	function myvar2()
+	{
+		alert("demo");
+	}
+	$("#d").click(function(){
+        $("#d").hide();
+    });
+	
+  
+	</script>
+</body>
+</html>

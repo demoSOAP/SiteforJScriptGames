@@ -1,0 +1,58 @@
+/* CSS Document */
+#one
+{
+	width: 500px;
+	height: auto;
+	position: relative;
+	left: 550px;
+	
+}
+header
+{
+	text-align: justify;
+	margin-bottom: 30px;
+	
+}
+
+li 
+{
+	position: relative;
+	left: 200px;
+	margin: 10px;
+	margin-right: 0px;
+	margin-bottom: 50px;
+	color: steelblue;
+	font: normal;
+	width: 700px;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+	height: 250px;
+	
+}
+p
+{
+	position: relative;
+	left: 20px;
+	width: 600px;
+	font-weight: bolder;
+}
+#222
+{
+	position: absolute;
+	left: -200px;
+	top: 109px;
+}
+ #about {
+	width: 100px;
+	left: 1450px;
+	top: -600px;
+}
+#container {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 190px;
+	background: yellow;
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+
+    z-index:4500;
+}
